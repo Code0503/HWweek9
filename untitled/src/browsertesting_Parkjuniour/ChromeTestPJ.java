@@ -1,0 +1,29 @@
+package browsertesting_Parkjuniour;
+
+import graphql.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.time.Duration;
+
+public class ChromeTestPJ {
+    static WebDriver driver;
+    static String url ="https://www.parkjuniorwellingborough.co.uk/";
+    static String expectedTitle = "Home | Park Junior School";
+
+    public static void main(String[] args) {
+        ChromeOptions options = new ChromeOptions();
+        driver=new ChromeDriver(options);
+        driver.get(url);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3000));
+        String achtualTitle= driver.getTitle();
+        System.out.println("Title of the page is : "+achtualTitle);
+        Assert.assertTrue(expectedTitle.equalsIgnoreCase(achtualTitle));
+        driver.quit();
+
+    }
+}
+
+
